@@ -1,4 +1,4 @@
-# Mexdev.io - recruiting app
+# Finetting - Fintech Social Network
 
 ## Project setup / Configuracion inicial de proyecto
 ```
@@ -7,7 +7,7 @@ npm install
 
 ### Compiles and hot-reloads for development / servidor local para precomplilar y actualizar app automaticamente
 ```
-npm run-script serve
+npm run serve
 ```
 
 ### Compiles and minifies for production
