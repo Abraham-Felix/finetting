@@ -3,15 +3,7 @@
     box-shadow: 0px 0px 4px -1px gray;
     padding:7px !important;
   }
-  form.v-form.mb-10.px-10 {
-  padding: 0 !important;
-  }
-  .main-content {
-  margin:auto;
-  }
-  .post-image {
-  max-width:100px;
-  }
+  
 
   .feed-wall {
   overflow-y: auto;
@@ -21,6 +13,16 @@
 </style>
 <!-- full scoped style to be revised -->
 <style>
+.top-r {
+ text-align: -webkit-right;
+}
+main {
+      position: initial !important;
+}
+.v-navigation-drawer--absolute {
+    position: fixed;
+    margin-top: 65px;
+}
 .v-application--wrap {
   min-height: 0;
 }
@@ -32,42 +34,8 @@
 
     <v-container  fluid>
     <div class="main-content">
-    <v-form
-    class="mb-10 px-10"
-    v-model="valid"
-    v-on:submit.prevent="addPost"
-    >
-      <v-card class=" d-flex align-self-start flex-column"  cols="auto">
-        <v-row no-gutters>
-          <v-col  class="s-div "  cols="1">
-            <v-img
-            class="align-center post-image"
-            :src="authUser.photoURL">
-            </v-img>
-          </v-col>
-          <v-col  class="s-div d-flex" cols="11">
-          <v-textarea
-          v-model="newPost.postText"
-          :rules="postRules"
-          :counter="155"
-          rows="2"
-          class="pt-5"
-          label="Share your thoughts! 😎"
-          required>
-        </v-textarea>
-        <v-btn
-        class="ml-3 m-tb-20 align-self-end"
-        @click="markcompleted();"
-        type="submit"
-        small color="primary"
-        dark
-        >
-          {{ displayText }}
-        </v-btn>
-          </v-col>
-        </v-row>
-      </v-card>
-      </v-form>
+    <!-- form here :D -->
+   <FeedForm/>
 
 <!-- feed wall -->
 <v-divider/>
@@ -133,50 +101,30 @@
 </template>
 
 <script>
-// import firebase from '@/plugins/firebase'
-import toastr from 'toastr';
-let db = firebase.database();
-let messagesRef = db.ref('posts');
 
-import firebase from '../plugins/firebase'
+
+import firebase from '@/plugins/firebase'
 import FintechSocialProfile from '@/components/fintechsocial/FintechSocialProfile.vue'
 import FintechSocialFeed from '@/components/fintechsocial/FintechSocialFeed.vue'
+import FeedForm from '@/components/fintechsocial/FeedForm.vue'
 
 export default {
     name: 'FintechSocial',
     components: {
       FintechSocialProfile,
-      FintechSocialFeed
+      FintechSocialFeed,
+      FeedForm
     },
     data: () => ({
-        displayText: 'send',
         menu: false,
         drawer: true,
         mini: true,
         dialog: false,
-        viewgigdialog: false,
-        tutorialdialog: false,
         authUser: '',
         displayName: '',
-        newPost: {
-            postText: '',
-        },
-        postRules: [
-            v => !!v || 'Content is required amigo!'
-        ],
+        viewgigdialog: false,
+        tutorialdialog: false,
       }),
-      methods: {
-          addPost: function() {
-              messagesRef.child(this.authUser.uid).push(this.newPost);
-              this.newPost.postText = '';
-              toastr.success('Horray! message sent successfully');
-              this.displayText = 'Nice job!'
-              this.postRules = true;
-          },
-          markcompleted: function() {
-              this.displayText = 'something is strange';
-          }
-      },
       created: function() {
           // functions
           var user = firebase.auth().currentUser;
@@ -199,15 +147,3 @@ export default {
 
       }
 </script>
-<style>
-.top-r {
- text-align: -webkit-right;
-}
-main {
-      position: initial !important;
-}
-.v-navigation-drawer--absolute {
-    position: fixed;
-    margin-top: 65px;
-}
-</style>
