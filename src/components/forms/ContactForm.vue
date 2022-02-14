@@ -1,22 +1,25 @@
 <template>
 <v-card class="contact-form">
 
-  <h1>Contacto</h1>
+  <h1>Contact us</h1>
   <div>
     <a href="/landing">
     <v-img
-      alt="mexdev logo"
+      alt="Finetting logo"
       class="shrink center"
       contain
-      src="https://firebasestorage.googleapis.com/v0/b/mexdev-40fff.appspot.com/o/logos%2Ffavicon%20-%20Copy.png?alt=media&token=83158426-51b5-40c2-9423-9756710c79f0"
+      src="@/assets/graphics/finetting.png"
       transition="scale-transition"
       width="100"
     />
     </a>
       <br>
     <v-text>
-      <p class="px-md-15 pt-md-5 text-md-body-2 center"> Envíame una solicitud, te responderé lo antes posible, <br>
-        haré todo lo posible para encontrar una solución,<br>sinceramente, <a href="mailto:mexdevservice@gmail.com"><b>mexdev</b>.</a>
+      <p
+      class="px-md-15 pt-md-5 text-md-body-2 center"
+      >
+      Send me a request, I will answer you as soon as possible, <br>
+      I will do my best to find a solution,<br>honestly, <a href="mailto:mexdevservice@gmail.com"><b>Finetting</b>.</a>
       </p>
     </v-text >
     <br>
@@ -27,7 +30,7 @@
             <div class="form-group">
                 <v-text-field
                 :rules="nameRules"
-                required label="Nombre"
+                required label="Name"
                 type="text"
                 name="from_name"
                 id="messageFirst"
@@ -38,7 +41,7 @@
             <div class="form-group">
                 <v-text-field
                 :rules="nameRules"
-                required label="Apellido"
+                required label="Last"
                 name="from_last"
                 type="text" id="messageLast"
                 class="form-control"
@@ -49,7 +52,7 @@
             <div class="form-group">
                 <v-text-field
                 :rules="emailRules"
-                required label="Correo"
+                required label="E-mail"
                 name="email"
                 type="text"
                 id="messageEmail"
@@ -60,7 +63,7 @@
             <div class="form-group">
                 <v-text-field
                 :rules="phoneRules"
-                required label="Telefono"
+                required label="Phone"
                 name="phone"
                 id="clientPhone"
                 class="form-control"
@@ -73,14 +76,14 @@
                :rules="productRules"
                :items="newMessage.product"
                v-model="newMessage.product"
-               required label="Producto"
+               required label="Topic"
                class="mx-2"
         ></v-select>
             </div>
             <div class="form-group">
                 <v-textarea
                 :rules="contentRules"
-                required label="Mensaje"
+                required label="Message"
                 type="text" id="messageContent"
                 class="form-control"
                 name="message"
@@ -98,7 +101,7 @@
 
 
               <v-divider/>
-            <p class="center text-body-2 "> <b> Horario de oficina en casa: </b> </p>
+            <p class="center text-body-2 "> <b> Home office hours </b> </p>
               <v-row>
                 <v-col cols="12" class="text-body-2">
                     10:00am - 01:00pm | 2:00pm - 6:00pm (PST)
@@ -132,13 +135,13 @@ export default {
 
     data() {
         return {
-            displayText: 'enviar mensaje',
+            displayText: 'Send Message',
             newMessage: {
                 first: '',
                 last: '',
                 email: '',
                 phone: '',
-                product: ['Mxdv Support', 'NuStack', 'NuDream'],
+                product: ['Feedback', 'Support', 'Other'],
                 content: ''
             },
             nameRules: [
