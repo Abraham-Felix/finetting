@@ -13,7 +13,19 @@ padding:7px !important;
            v-for="post in allPosts.slice().reverse()"
            :key="post._key">
            <v-card class=" feed-card my-3">
+           <v-row no-gutters>
+           <v-col cols="1">
+           <v-img
+           class="align-center rounded-xl "
+           width="30"
+           :src="post.photoURL">
+           </v-img>
+           </v-col>
+           <v-col cols="10">
              <p class="">{{post.postText}}</p>
+             <p class="blue-grey--text ">{{post.displayName}}</p>
+             </v-col>
+             </v-row>
        </v-card>
      </div>
    </div>

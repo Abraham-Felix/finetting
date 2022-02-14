@@ -64,6 +64,8 @@ v-on:submit.prevent="addPost"
   displayText: 'send',
   newPost: {
       postText: '',
+      displayName: '',
+      photoURL: '',
   },
 
   postRules: [
@@ -76,6 +78,8 @@ v-on:submit.prevent="addPost"
       addPost: function() {
           messagesRef.child(this.authUser.uid).push(this.newPost);
           this.newPost.postText = '';
+          this.authUser.displayName = '';
+          this.authUser.photoURL = '';
           toastr.success('Horray! message sent successfully');
           this.displayText = 'Nice job!'
           this.postRules = true;
@@ -100,6 +104,8 @@ v-on:submit.prevent="addPost"
             if (user) {
                 this.displayName = user.displayName
                 this.photoURL = user.photoURL
+                this.newPost.displayName = user.displayName
+                this.newPost.photoURL = user.photoURL
                 }
               })
         }
