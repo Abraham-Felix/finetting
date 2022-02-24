@@ -102,8 +102,6 @@ v-on:submit.prevent="addPost"
         firebase.auth().onAuthStateChanged(user => {
             this.authUser = user
             if (user) {
-                this.displayName = user.displayName
-                this.photoURL = user.photoURL
                 this.newPost.displayName = user.displayName
                 this.newPost.photoURL = user.photoURL
                 }

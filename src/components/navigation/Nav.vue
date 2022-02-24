@@ -63,7 +63,7 @@ a.px-5.nav-link:hover {
       elevate-on-scroll
     >
     <div center >
-      <router-link to="/landing">
+      <router-link to="/fintechsocial">
       <v-img
         alt="Mexdev Small Navbar Logo"
         class="shrink  t-l d-sm-flex"
@@ -109,7 +109,7 @@ a.px-5.nav-link:hover {
       elevate-on-scroll
     >
       <div center >
-        <router-link to="/landing">
+        <router-link to="/fintechsocial">
         <v-img
           alt="Mexdev Small Navbar Logo"
           class="shrink  t-l d-sm-flex"
