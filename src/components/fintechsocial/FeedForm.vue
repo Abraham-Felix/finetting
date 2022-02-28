@@ -44,7 +44,7 @@ v-on:submit.prevent="addPost"
     >
       {{ displayText }}
     </v-btn>
-      </v-col>
+    </v-col>
     </v-row>
   </v-card>
   </v-form>
@@ -65,6 +65,9 @@ v-on:submit.prevent="addPost"
   newPost: {
       postText: '',
       displayName: '',
+      timestamp: '',
+      date: '',
+      time: '',
       photoURL: '',
   },
 
@@ -75,10 +78,22 @@ v-on:submit.prevent="addPost"
   }),
 
   methods: {
+      printTimestamp: function () {
+        return Date.now();
+      },
+      printDate: function () {
+        return new Date().toLocaleDateString();
+      },
+      printTime: function () {
+        return new Date().toLocaleTimeString();
+      },
       addPost: function() {
           messagesRef.child(this.authUser.uid).push(this.newPost);
           this.newPost.postText = '';
           this.authUser.displayName = '';
+          this.newPost.timestamp = '';
+          this.newPost.date = '';
+          this.newPost.time = '';
           this.authUser.photoURL = '';
           toastr.success('Horray! message sent successfully');
           this.displayText = 'Nice job!'
@@ -90,6 +105,9 @@ v-on:submit.prevent="addPost"
   },
   created: function() {
         // functions
+        this.newPost.timestamp = this.printTimestamp();
+        this.newPost.date = this.printDate();
+        this.newPost.time = this.printTime();
         var user = firebase.auth().currentUser;
         var uid;
         if (user != null) {

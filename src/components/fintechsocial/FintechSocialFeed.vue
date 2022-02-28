@@ -24,6 +24,7 @@ padding:7px !important;
            <v-col cols="10">
              <p class="">{{post.postText}}</p>
              <p class="blue-grey--text ">{{post.displayName}}</p>
+             <p class="mb-n1 mt-n5 d-flex flex-row-reverse"> {{post.date}} {{post.time}}</p>
              </v-col>
              </v-row>
        </v-card>
@@ -36,7 +37,6 @@ import firebase from '@/plugins/firebase'
 let db = firebase.database();
 //let usersRef = db.ref('users');
 let postRef = db.ref('posts');
-
 export default {
   name: 'FintechSocialFeed',
   data: () => ({
@@ -56,7 +56,6 @@ export default {
               Object.entries(posts).map(([ _key, post ]) => ({ _key, ...post})))
             }
             console.log(snapshot.val())
-
           });
         }
 
